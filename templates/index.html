@@ -100,6 +100,22 @@
 
       </div>
 
+      <!-- Entropy Explanation Card -->
+      <div class="card entropy-info-card" id="entropy-info-card" style="margin-top: 16px;">
+        <h2 class="card-title">
+          <span class="card-icon">💡</span> What does Entropy mean?
+        </h2>
+        <div class="entropy-info-content" style="font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); margin-top: 12px;">
+          <p style="margin-bottom: 8px;"><strong>Entropy</strong> measures how chaotic or random the data inside a file is, on a scale from <strong>0 to 8</strong>.</p>
+          <ul style="margin-left: 20px; margin-bottom: 12px;">
+            <li style="margin-bottom: 4px;"><strong>Low Entropy (0-4):</strong> The data is highly structured or repetitive (e.g., plain text, empty files).</li>
+            <li style="margin-bottom: 4px;"><strong>Medium Entropy (4-7):</strong> Normal structure with some complexity (e.g., most uncompressed images, audio, documents).</li>
+            <li><strong>High Entropy (7-8):</strong> Highly random data. This usually means the file is <strong>compressed</strong> (like a ZIP archive) or <strong>encrypted</strong>.</li>
+          </ul>
+          <p>By comparing the expected randomness of a file format to its actual randomness, ForensiCheck can spot files that might be hiding malicious data or claiming to be a different format than they actually are.</p>
+        </div>
+      </div>
+
       <!-- ZIP detail card (shown only for ZIP-family files) -->
       <div class="card zip-detail-card" id="zip-detail-card" style="display:none">
         <h2 class="card-title">

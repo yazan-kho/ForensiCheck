@@ -22,6 +22,7 @@ const verdictFilesize = document.getElementById("verdict-filesize");
 const verdictDetail = document.getElementById("verdict-detail");
 const sigContent    = document.getElementById("sig-content");
 const entropyContent= document.getElementById("entropy-content");
+const entropyInfoCard= document.getElementById("entropy-info-card");
 const zipDetailCard = document.getElementById("zip-detail-card");
 const zipDetailContent = document.getElementById("zip-detail-content");
 
