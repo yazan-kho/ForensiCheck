@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForensiCheck — File Signature Analyzer</title>
+  <meta name="description"
+    content="Digital forensics tool that detects file extension manipulation by analyzing binary magic byte signatures." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <!-- ── Background particles ───────────────────────────────────────────── -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ── Top navigation bar ─────────────────────────────────────────────── -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <span class="nav-icon">🔬</span>
+      <span class="nav-title">ForensiCheck</span>
+      <span class="nav-badge">v1.0</span>
+    </div>
+    <p class="nav-sub">Binary Signature &amp; Extension Integrity Analyzer</p>
+  </header>
+
+  <!-- ── Main content ───────────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <!-- Upload card -->
+    <section class="card upload-card" id="upload-section">
+      <h1 class="section-title">Analyze a File</h1>
+      <p class="section-desc">
+        Drop any file or browse to upload. ForensiCheck will inspect its binary
+        signature, detect the real format, and flag any extension mismatch.
+      </p>
+
+      <!-- Drag-and-drop zone -->
+      <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Drop a file here or click to browse">
+        <div class="drop-zone-inner">
+          <div class="drop-icon" id="drop-icon">📂</div>
+          <p class="drop-primary" id="drop-primary">Drag &amp; drop a file here</p>
+          <p class="drop-secondary">or</p>
+          <label class="btn-browse" for="file-input">Browse Files</label>
+          <input type="file" id="file-input" style="display:none" />
+          <p class="drop-hint" id="drop-hint">Any file type accepted · Max 256 MB</p>
+        </div>
+      </div>
+
+      <!-- Analyze button -->
+      <button class="btn-analyze" id="btn-analyze" disabled>
+        <span class="btn-text">Analyze File</span>
+        <span class="btn-spinner" id="btn-spinner" aria-hidden="true"></span>
+      </button>
+    </section>
+
+    <!-- ── Results ────────────────────────────────────────────────────────── -->
+    <section class="results-section" id="results-section" aria-live="polite">
+
+      <!-- Verdict card -->
+      <div class="card verdict-card" id="verdict-card">
+        <div class="verdict-header">
+          <div class="verdict-badge" id="verdict-badge"></div>
+          <div class="verdict-file-info">
+            <span class="verdict-filename" id="verdict-filename"></span>
+            <span class="verdict-filesize" id="verdict-filesize"></span>
+          </div>
+        </div>
+        <p class="verdict-detail" id="verdict-detail"></p>
+      </div>
+
+      <!-- Two-column detail row -->
+      <div class="detail-row">
+
+        <!-- Signature match card -->
+        <div class="card detail-card" id="sig-card">
+          <h2 class="card-title">
+            <span class="card-icon">🔏</span> Signature Matches
+          </h2>
+          <div id="sig-content"></div>
+        </div>
+
+        <!-- Entropy card -->
+        <div class="card detail-card" id="entropy-card">
+          <h2 class="card-title">
+            <span class="card-icon">📊</span> Entropy Analysis
+          </h2>
+          <div id="entropy-content"></div>
+        </div>
+
+      </div>
+
+      <!-- ZIP detail card (shown only for ZIP-family files) -->
+      <div class="card zip-detail-card" id="zip-detail-card" style="display:none">
+        <h2 class="card-title">
+          <span class="card-icon">📦</span> ZIP Container Inspection
+        </h2>
+        <div id="zip-detail-content"></div>
+      </div>
+
+    </section>
+
+    <!-- Error toast -->
+    <div class="toast" id="error-toast" role="alert" aria-live="assertive"></div>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>ForensiCheck · Digital Forensics Tool · Built By <i>Yazan Khouli</i></p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
