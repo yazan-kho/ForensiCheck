@@ -58,6 +58,7 @@
 ## 🌐 How to Start Online
 
 1. Go to [ForensiCheck](https://forensicheck.onrender.com/)
+   > Note that in some cases the website may take ~1 minute to start, please be patient
 2. Drag and drop any file (up to 256 MB) into the upload zone, or click to browse files.
 3. Click **Analyze File**.
 4. View the detailed forensic verdict, signature matches, and entropy metrics. 
