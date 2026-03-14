@@ -170,13 +170,21 @@ def analyze_file(file_path: str, original_filename: str) -> dict:
                 sample.decode("utf-8")
                 # True plain text shouldn't have null bytes
                 if b"\x00" not in sample:
-                    primary_type = {
-                        "label": "Plain Text Document",
-                        "extensions": ["txt", "csv", "md", "json", "log", "ini", "cfg", "xml", "html", "py", "js", "css", "java", "c", "php", "cpp"],
-                        "offset": 0,
-                        "magic_hex": "N/A",
-                        "note": "Detected via UTF-8/ASCII heuristic (no binary magic bytes found)."
-                    }
+                    # Try semantic keyword analysis
+                    decoded_text = sample.decode("utf-8")
+                    from .heuristics import identify_source_code
+                    semantic_match = identify_source_code(decoded_text)
+                    
+                    if semantic_match:
+                         primary_type = semantic_match
+                    else:
+                        primary_type = {
+                            "label": "Plain Text Document",
+                            "extensions": ["txt", "csv", "md", "json", "log", "ini", "cfg", "xml", "html", "py", "js", "css", "java", "c", "php", "cpp"],
+                            "offset": 0,
+                            "magic_hex": "N/A",
+                            "note": "Detected via UTF-8/ASCII heuristic (no binary magic bytes found)."
+                        }
                     detected_types.append(primary_type)
             except UnicodeDecodeError:
                 pass

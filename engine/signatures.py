@@ -68,8 +68,8 @@ SIGNATURES = [
 
     # ── Scripts / Text (heuristic) ───────────────────────────────────────────
     {"offset": 0, "magic": b"\xef\xbb\xbf",         "label": "UTF-8 BOM Text",        "extensions": ["txt", "html", "xml", "csv"]},
-    {"offset": 0, "magic": b"\xff\xfe",             "label": "UTF-16 Little Endian Text",       "extensions": ["txt", "html", "xml", "csv"]},
-    {"offset": 0, "magic": b"\xfe\xff",             "label": "UTF-16 Big Endian Text",       "extensions": ["txt", "html", "xml", "csv"]},
+    # {"offset": 0, "magic": b"\xff\xfe",             "label": "UTF-16 Little Endian Text",       "extensions": ["txt", "html", "xml", "csv"]},
+    # {"offset": 0, "magic": b"\xfe\xff",             "label": "UTF-16 Big Endian Text",       "extensions": ["txt", "html", "xml", "csv"]},
     {"offset": 0, "magic": b"<?xml",                "label": "XML Document",          "extensions": ["xml", "svg", "xhtml"]},
     {"offset": 0, "magic": b"<!DOCTYPE",            "label": "HTML Document",         "extensions": ["html", "htm"]},
     {"offset": 0, "magic": b"<html",                "label": "HTML Document",         "extensions": ["html", "htm"]},
